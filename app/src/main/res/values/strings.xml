@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RUCafe</string>
+    <string name="yeast_donut">Yeast Donut</string>
+    <string name="cake_donut">Cake Donut</string>
+    <string name="donut_holes">Donut Holes</string>
+    <string name="quantity_label">Quantity:</string>
 </resources>
