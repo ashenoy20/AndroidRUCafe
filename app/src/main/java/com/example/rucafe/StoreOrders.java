@@ -1,8 +1,5 @@
-package sample;
+package com.example.rucafe;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,9 +13,9 @@ import java.text.NumberFormat;
  *
  * @author Abimanyu Ananthu, Ashish Shenoy
  */
-public class StoreOrders implements Customizable{
+public class StoreOrders{ //Implement Customizable
 
-    private ObservableList<Order> list;
+   // private ObservableList<Order> list;
 
     /**
      * Constructor that creates an instance of the StoreOrders class.
@@ -27,7 +24,7 @@ public class StoreOrders implements Customizable{
      * This is initialized as an empty list that can hold the orders.
      */
     public StoreOrders(){
-        this.list = FXCollections.observableArrayList();
+        //this.list = FXCollections.observableArrayList();
     }
 
     /**
@@ -37,9 +34,11 @@ public class StoreOrders implements Customizable{
      * @param list - the listview that will display the order
      * @param index - int that represents the index the specified order within the StoreOrders list
      */
+    /*
     public void connectOrderToListView(ListView<MenuItem> list, int index){
         this.list.get(index).connectToListView(list);
     }
+     */
 
     /**
      * A method that returns the amount of the total of a given order. This order is found using the index number
@@ -49,9 +48,12 @@ public class StoreOrders implements Customizable{
      *
      * @return - double total of the order that index corresponds to.
      */
+    /*
     public double getTotal(int index){
         return this.list.get(index).calculateTotal();
     }
+
+     */
 
     /**
      * A method that just returns order based on the index sent in.
@@ -60,18 +62,24 @@ public class StoreOrders implements Customizable{
      *
      * @return - A int value that shows how many items are in the order.
      */
+    /*
     public Order getOrder(int index){
         return this.list.get(index);
     }
+
+     */
 
     /**
      * A method that just returns the size of the list.
      *
      * @return - A int value that shows how many orders are in the list.
      */
+    /*
     public int getSize(){
         return this.list.size();
     }
+
+     */
 
     /**
      * A method that adds an order to the store order list.
@@ -82,6 +90,7 @@ public class StoreOrders implements Customizable{
      *  @return - A boolean value that is true if the order
      *  is successfully added.
      */
+    /*
     @Override
     public boolean add(Object obj) {
         ObservableList<Order> orderItems = this.list;
@@ -89,6 +98,8 @@ public class StoreOrders implements Customizable{
         orderItems.add(addedOrder);
         return true;
     }
+
+     */
 
     /**
      * A method that removes an order from the store order list.
@@ -100,6 +111,7 @@ public class StoreOrders implements Customizable{
      *  @return - A boolean value that is true if the order
      *  is successfully removed.
      */
+    /*
     @Override
     public boolean remove(Object obj) {
         ObservableList<Order> orderItems = this.list;
@@ -111,6 +123,8 @@ public class StoreOrders implements Customizable{
         return false;
     }
 
+     */
+
     /**
      * Takes in a File object as a parameter and writes the list information
      * from the StoreOrders list to the file.
@@ -119,6 +133,7 @@ public class StoreOrders implements Customizable{
      * @throws IOException - Throws error if something goes wrong when
      *                        writing to file
      */
+    /*
     public void exportOrders(File target) throws IOException {
 
             int orderCt = 1;
@@ -140,4 +155,6 @@ public class StoreOrders implements Customizable{
             }
 
     }
+
+     */
 }

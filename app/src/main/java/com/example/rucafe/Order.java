@@ -1,8 +1,5 @@
-package sample;
+package com.example.rucafe;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
 /**
  * A class that keeps track of the items the client ordered
@@ -11,9 +8,9 @@ import javafx.scene.control.ListView;
  * orders, and gets called to show the order on the listview when the client is on their
  * current order page.
  */
-public class Order implements Customizable{
+public class Order { //implement Customizable
 
-    private ObservableList<MenuItem> list;
+    //private ObservableList<MenuItem> list;
 
     public static final double TAX_RATE = 0.06625;
 
@@ -23,9 +20,12 @@ public class Order implements Customizable{
      *
      * This is initialized as an empty list that can hold the menu items.
      */
+    /*
     public Order(){
         this.list = FXCollections.observableArrayList();
     }
+
+     */
 
     /**
      * Helper method that helps calculate the subtotal of
@@ -34,6 +34,7 @@ public class Order implements Customizable{
      * to the list.
      * @return - double that represents the subtotal
      */
+    /*
     public double calculateSubtotal(){
         ObservableList<MenuItem> list = this.list;
 
@@ -46,6 +47,8 @@ public class Order implements Customizable{
         return subtotal;
     }
 
+     */
+
     /**
      * Helper method that helps calculate the subtotal of
      * sales tax that is applicable in the state of New Jersey.
@@ -53,10 +56,13 @@ public class Order implements Customizable{
      * @return - double that represents the sales tax of the subtotal
      *           for the current order.
      */
+    /*
     public double calculateTax(){
         double subtotal = this.calculateSubtotal();
         return subtotal*TAX_RATE;
     }
+
+     */
 
     /**
      * Helper method that helps calculate the total of
@@ -64,22 +70,26 @@ public class Order implements Customizable{
      *
      * @return - double that represents the total amount of the current order.
      */
+    /*
     public double calculateTotal(){
         double subtotal = this.calculateSubtotal();
         double tax = this.calculateTax();
 
         return tax + subtotal;
     }
-
+    */
     /**
      * A method that just returns the size of the list.
      *
      * @return - A int value that shows how many items are in the order.
      */
+    /*
     public int getSize(){
         return this.list.size();
     }
 
+
+     */
 
     /**
      * A method that connects the list to the listview by passing
@@ -87,9 +97,12 @@ public class Order implements Customizable{
      * @param list - a listview that will be used to display
      *             the list.
      */
+    /*
     public void connectToListView(ListView<MenuItem> list){
         list.setItems(this.list);
     }
+
+     */
 
     /**
      * A method that formats the order into a clear
@@ -97,6 +110,7 @@ public class Order implements Customizable{
      *
      * @return - A String value that is readable by the client
      */
+    /*
     @Override
     public String toString(){
         StringBuilder order = new StringBuilder();
@@ -109,6 +123,8 @@ public class Order implements Customizable{
     }
 
 
+     */
+
     /**
      * A method that adds a menu item (donut or coffee) to the contents
      * of the order. Store this new item at the end of the orderItems list.
@@ -117,6 +133,7 @@ public class Order implements Customizable{
      * @return - A boolean value that is true if the item
      *      is successfully added.
      */
+    /*
     @Override
     public boolean add(Object obj) {
         ObservableList<MenuItem> orderItems = this.list;
@@ -135,6 +152,8 @@ public class Order implements Customizable{
 
     }
 
+     */
+
     /**
      * A method that removes a menu item (donut or coffee) from the contents
      * of the order. Deletes this item from the list of items in the order.
@@ -145,6 +164,7 @@ public class Order implements Customizable{
      *  @return - A boolean value that is true if the item
      *          is successfully removed.
      */
+    /*
     @Override
     public boolean remove(Object obj) {
         ObservableList<MenuItem> orderItems = this.list;
@@ -159,4 +179,6 @@ public class Order implements Customizable{
         }
         return false;
     }
+
+     */
 }

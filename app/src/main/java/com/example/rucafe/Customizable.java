@@ -1,4 +1,4 @@
-package sample;
+package com.example.rucafe;
 
 /**
  * An interface that requires the class that implemented
