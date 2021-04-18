@@ -31,21 +31,21 @@ public class MainActivity extends AppCompatActivity {
         coffeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                donutClick(v);
+                coffeeClick(v);
             }
         });
 
         currButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                donutClick(v);
+                currentOrderClick(v);
             }
         });
 
         viewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                donutClick(v);
+                viewOrderClick(v);
             }
         });
     }

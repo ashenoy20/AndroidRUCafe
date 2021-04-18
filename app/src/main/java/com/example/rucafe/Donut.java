@@ -14,7 +14,6 @@ package com.example.rucafe;
 public class Donut extends MenuItem{
     private int quantity;
     private String type;
-    private String subtype;
 
     public static final double YEAST_DONUT_PRICE = 1.39;
     public static final double CAKE_DONUT_PRICE = 1.59;
@@ -25,14 +24,12 @@ public class Donut extends MenuItem{
      * Keeps track of specific attributes of the donuts.
      *
      * @param type - String that represents the type of donut
-     * @param subtype - String that represents the subtype of the donut
      * @param quantity - Integer that represents the amount of donuts
      */
-    public Donut(String type, String subtype, int quantity) {
+    public Donut(String type, int quantity) {
         super(0);
         this.quantity = quantity;
         this.type = type;
-        this.subtype = subtype;
     }
 
     /**
@@ -83,14 +80,6 @@ public class Donut extends MenuItem{
         return this.quantity;
     }
 
-    /**
-     * Getter method that gets the subtype of donut
-     *
-     * @return - String that represents the type
-     *          of donut
-     */
-    public String getSubtype(){ return this.subtype;}
-
 
     /**
      * A method that formats the donut into a clear
@@ -99,7 +88,7 @@ public class Donut extends MenuItem{
      * @return - A String value that is readable by the client
      */
     public String toString(){
-        return "(" + getQuantity() + ") "+ getSubtype();
+        return "(" + getQuantity() + ") "+ getType();
     }
 
 }
