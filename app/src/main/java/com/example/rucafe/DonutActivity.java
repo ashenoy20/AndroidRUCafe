@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DonutActivity extends AppCompatActivity {
@@ -99,6 +101,7 @@ public class DonutActivity extends AppCompatActivity {
             newDonut.itemPrice();
             list.add(newDonut);
             adapter.notifyDataSetChanged();
+            calculateSubtotal();
         }catch(Exception e){
             Toast.makeText(this, "Please select valid quantity", Toast.LENGTH_SHORT).show();
         }
@@ -116,6 +119,7 @@ public class DonutActivity extends AppCompatActivity {
                 for(int i = 0; i < donutList.getChildCount(); i++){
                     donutList.getChildAt(i).setBackgroundResource(R.color.unselectedItem);
                 }
+                calculateSubtotal();
                 Toast.makeText(this, "Successfully removed item", Toast.LENGTH_SHORT).show();
                 selectedPosition = NO_SELECTION;
             }catch (Exception e){
@@ -125,8 +129,15 @@ public class DonutActivity extends AppCompatActivity {
     }
 
 
-    public String calculateSubtoal(){
-        return "";
+    public void calculateSubtotal(){
+        TextView subtotalView = findViewById(R.id.subtotalView);
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        double subtotal = 0;
+        for(int i = 0; i < list.size(); i++){
+            subtotal += list.get(i).itemPrice();
+        }
+        String textSubtotal = formatter.format(subtotal);
+        subtotalView.setText(textSubtotal);
     }
 
 
