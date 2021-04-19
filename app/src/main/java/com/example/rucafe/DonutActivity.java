@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +18,15 @@ import java.util.ArrayList;
 public class DonutActivity extends AppCompatActivity {
 
     private static ArrayList<Donut> list = new ArrayList<>();
+    private static final int NO_SELECTION = -1;
 
-    private Button addCart;
-    private Button removeCart;
-    private Button addOrder;
     private RadioGroup group;
     private EditText quantity;
+    private ListView donutList;
+
+    private ArrayAdapter<Donut> adapter;
+
+    private int selectedPosition = NO_SELECTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +34,44 @@ public class DonutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donut);
         setTitle("Order Donuts");
 
-        addCart = findViewById(R.id.addCart);
-        removeCart = findViewById(R.id.removeCart);
-        addOrder = findViewById(R.id.addOrder);
+        Button addCart = findViewById(R.id.addCart);
+        Button removeCart = findViewById(R.id.removeCart);
+        Button addOrder = findViewById(R.id.addOrder);
         group = findViewById(R.id.group);
         quantity = findViewById(R.id.quantityText);
 
-        ListView donutList = findViewById(R.id.donutList);
-        ArrayAdapter<Donut> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        donutList = findViewById(R.id.donutList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         donutList.setAdapter(adapter);
+        donutList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                View v;
+                for(int i = 0; i < donutList.getChildCount(); i++){
+                    if(i == position){
+                        selectedPosition = i;
+                        v = donutList.getChildAt(i);
+                        v.setBackgroundResource(R.color.selectedItem);
+                    }else{
+                        v = donutList.getChildAt(i);
+                        v.setBackgroundResource(R.color.unselectedItem);
+                    }
+                }
+            }
+        });
+        donutList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         addCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addToCart(v);
+            }
+        });
+
+        removeCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeFromCart(v);
             }
         });
 
@@ -69,11 +98,35 @@ public class DonutActivity extends AppCompatActivity {
             }
             newDonut.itemPrice();
             list.add(newDonut);
-            finish();
-            startActivity(getIntent());
+            adapter.notifyDataSetChanged();
         }catch(Exception e){
             Toast.makeText(this, "Please select valid quantity", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    public void removeFromCart(View v){
+            try {
+                if(selectedPosition == NO_SELECTION){
+                    Toast.makeText(this, "Please select an item from list", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                list.remove(selectedPosition);
+                adapter.notifyDataSetChanged();
+                for(int i = 0; i < donutList.getChildCount(); i++){
+                    donutList.getChildAt(i).setBackgroundResource(R.color.unselectedItem);
+                }
+                Toast.makeText(this, "Successfully removed item", Toast.LENGTH_SHORT).show();
+                selectedPosition = NO_SELECTION;
+            }catch (Exception e){
+                Toast.makeText(this, "No items in the list", Toast.LENGTH_SHORT).show();
+            }
+
+    }
+
+
+    public String calculateSubtoal(){
+        return "";
     }
 
 
