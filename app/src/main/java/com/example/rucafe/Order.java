@@ -1,6 +1,11 @@
 package com.example.rucafe;
 
 
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+
 /**
  * A class that keeps track of the items the client ordered
  *
@@ -8,9 +13,9 @@ package com.example.rucafe;
  * orders, and gets called to show the order on the listview when the client is on their
  * current order page.
  */
-public class Order { //implement Customizable
+public class Order implements Customizable{
 
-    //private ObservableList<MenuItem> list;
+    private ArrayList<MenuItem> list;
 
     public static final double TAX_RATE = 0.06625;
 
@@ -20,12 +25,12 @@ public class Order { //implement Customizable
      *
      * This is initialized as an empty list that can hold the menu items.
      */
-    /*
+
     public Order(){
-        this.list = FXCollections.observableArrayList();
+        this.list = new ArrayList<>();
     }
 
-     */
+
 
     /**
      * Helper method that helps calculate the subtotal of
@@ -34,9 +39,9 @@ public class Order { //implement Customizable
      * to the list.
      * @return - double that represents the subtotal
      */
-    /*
+
     public double calculateSubtotal(){
-        ObservableList<MenuItem> list = this.list;
+        ArrayList<MenuItem> list = this.list;
 
         double subtotal = 0;
 
@@ -47,7 +52,7 @@ public class Order { //implement Customizable
         return subtotal;
     }
 
-     */
+
 
     /**
      * Helper method that helps calculate the subtotal of
@@ -56,13 +61,13 @@ public class Order { //implement Customizable
      * @return - double that represents the sales tax of the subtotal
      *           for the current order.
      */
-    /*
+
     public double calculateTax(){
         double subtotal = this.calculateSubtotal();
         return subtotal*TAX_RATE;
     }
 
-     */
+
 
     /**
      * Helper method that helps calculate the total of
@@ -70,39 +75,25 @@ public class Order { //implement Customizable
      *
      * @return - double that represents the total amount of the current order.
      */
-    /*
+
     public double calculateTotal(){
         double subtotal = this.calculateSubtotal();
         double tax = this.calculateTax();
 
         return tax + subtotal;
     }
-    */
+
     /**
      * A method that just returns the size of the list.
      *
      * @return - A int value that shows how many items are in the order.
      */
-    /*
+
     public int getSize(){
         return this.list.size();
     }
 
 
-     */
-
-    /**
-     * A method that connects the list to the listview by passing
-     * in a reference to the listview object on the GUI
-     * @param list - a listview that will be used to display
-     *             the list.
-     */
-    /*
-    public void connectToListView(ListView<MenuItem> list){
-        list.setItems(this.list);
-    }
-
-     */
 
     /**
      * A method that formats the order into a clear
@@ -110,7 +101,7 @@ public class Order { //implement Customizable
      *
      * @return - A String value that is readable by the client
      */
-    /*
+
     @Override
     public String toString(){
         StringBuilder order = new StringBuilder();
@@ -122,8 +113,10 @@ public class Order { //implement Customizable
         return order.toString();
     }
 
+    public ArrayAdapter<MenuItem> linkAdapterToOrder(Context context, int layoutId){
+        return new ArrayAdapter<>(context, layoutId, this.list);
+    }
 
-     */
 
     /**
      * A method that adds a menu item (donut or coffee) to the contents
@@ -133,10 +126,10 @@ public class Order { //implement Customizable
      * @return - A boolean value that is true if the item
      *      is successfully added.
      */
-    /*
+
     @Override
     public boolean add(Object obj) {
-        ObservableList<MenuItem> orderItems = this.list;
+        ArrayList<MenuItem> orderItems = this.list;
 
         if(obj instanceof Donut){
             Donut donut = (Donut) obj;
@@ -152,7 +145,7 @@ public class Order { //implement Customizable
 
     }
 
-     */
+
 
     /**
      * A method that removes a menu item (donut or coffee) from the contents
@@ -164,10 +157,10 @@ public class Order { //implement Customizable
      *  @return - A boolean value that is true if the item
      *          is successfully removed.
      */
-    /*
+
     @Override
     public boolean remove(Object obj) {
-        ObservableList<MenuItem> orderItems = this.list;
+        ArrayList<MenuItem> orderItems = this.list;
         if(obj instanceof Donut){
             Donut donut = (Donut) obj;
             orderItems.remove(donut);
@@ -180,5 +173,5 @@ public class Order { //implement Customizable
         return false;
     }
 
-     */
+
 }

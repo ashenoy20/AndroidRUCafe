@@ -2,6 +2,7 @@ package com.example.rucafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
@@ -77,6 +78,13 @@ public class DonutActivity extends AppCompatActivity {
             }
         });
 
+        addOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToOrder(v);
+            }
+        });
+
     }
 
 
@@ -125,6 +133,15 @@ public class DonutActivity extends AppCompatActivity {
             }catch (Exception e){
                 Toast.makeText(this, "No items in the list", Toast.LENGTH_SHORT).show();
             }
+
+    }
+
+    public void addToOrder(View v){
+        Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
+        Bundle info = new Bundle();
+        info.putSerializable("Donut List", list);
+        donutInfo.putExtra("Bundle", info);
+        startActivity(donutInfo);
 
     }
 
