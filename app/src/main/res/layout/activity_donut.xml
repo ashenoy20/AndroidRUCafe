@@ -45,8 +45,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="393dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,6 @@
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="25dp"
         android:orientation="vertical"
@@ -130,6 +129,7 @@
         </LinearLayout>
 
         <RadioGroup
+            android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginStart="4dp"
@@ -172,15 +172,50 @@
 
     <ListView
         android:id="@+id/donutList"
-        android:layout_width="409dp"
-        android:layout_height="327dp"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.589">
+
+    </ListView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="413dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/donutList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/subtotal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:text="@string/zero_subtotal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

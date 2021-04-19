@@ -7,4 +7,6 @@
     <string name="add_to_cart">Add to Cart</string>
     <string name="remove_from_cart">Remove Item</string>
     <string name="add_to_order">Add to Order</string>
+    <string name="subtotal">Subtotal:</string>
+    <string name="zero_subtotal">$0.00</string>
 </resources>

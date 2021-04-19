@@ -12,7 +12,7 @@
         <activity android:name=".OrdersActivity"/>
         <activity android:name=".CurrentOrderActivity" />
         <activity android:name=".CoffeeActivity" />
-        <activity android:name=".DonutActivity"/>
+        <activity android:name=".DonutActivity" android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
