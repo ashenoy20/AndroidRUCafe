@@ -113,9 +113,9 @@ public class Order implements Customizable{
         return order.toString();
     }
 
-    public ArrayAdapter<MenuItem> linkAdapterToOrder(Context context, int layoutId){
-        return new ArrayAdapter<>(context, layoutId, this.list);
-    }
+   public ArrayList<MenuItem> copyList(){
+       return new ArrayList<>(this.list);
+   }
 
 
     /**

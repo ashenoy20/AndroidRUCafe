@@ -14,7 +14,7 @@ import java.text.NumberFormat;
 
 public class CoffeeActivity extends AppCompatActivity {
 
-    private static Coffee coffee;
+    private static Coffee coffee = new Coffee();
     private RadioGroup sizeGroup;
     private Button addOrder;
     private CheckBox[] addOns;
@@ -27,17 +27,20 @@ public class CoffeeActivity extends AppCompatActivity {
 
         addOrder = findViewById(R.id.addToOrder);
         sizeGroup = findViewById(R.id.coffeeSize);
-        addOns = new CheckBox[]{findViewById(R.id.checkBox),
-                findViewById(R.id.checkBox2),
-                findViewById(R.id.checkBox3),
-                findViewById(R.id.checkBox4),
-                findViewById(R.id.checkBox5)};
+        sizeGroup.check(R.id.small);
+        addOns = new CheckBox[]{
+                findViewById(R.id.caramelBox),
+                findViewById(R.id.creamBox),
+                findViewById(R.id.milkBox),
+                findViewById(R.id.syrupBox),
+                findViewById(R.id.whipCreamBox)};
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addToOrder(v);
             }
         });
+        calculateSubtotal();
 
     }
 
@@ -60,13 +63,18 @@ public class CoffeeActivity extends AppCompatActivity {
     }
 
     public void calculateSubtotal() {
-        TextView subtotalView = findViewById(R.id.textView2);
+        TextView subtotalView = findViewById(R.id.subtotalValue);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
         double subtotal = coffee.itemPrice();
 
         String textSubtotal = formatter.format(subtotal);
         subtotalView.setText(textSubtotal);
+    }
+
+    public void toggleAddIns(View v){
+
+
     }
 
 

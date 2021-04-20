@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -138,9 +139,7 @@ public class DonutActivity extends AppCompatActivity {
 
     public void addToOrder(View v){
         Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
-        Bundle info = new Bundle();
-        info.putSerializable("Donut List", list);
-        donutInfo.putExtra("Bundle", info);
+        donutInfo.putExtra("Donut List", list);
         startActivity(donutInfo);
 
     }

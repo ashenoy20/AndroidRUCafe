@@ -1,6 +1,9 @@
 package com.example.rucafe;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * A class that holds all the necessary information
  * about the Coffee item the client is ordering
@@ -11,7 +14,7 @@ package com.example.rucafe;
  * options offered.
  * @author Abimanyu Ananthu, Ashish Shenoy
  */
-public class Donut extends MenuItem{
+public class Donut extends MenuItem implements Parcelable {
     private int quantity;
     private String type;
 
@@ -31,6 +34,24 @@ public class Donut extends MenuItem{
         this.quantity = quantity;
         this.type = type;
     }
+
+    private Donut(Parcel in) {
+        super(0);
+        quantity = in.readInt();
+        type = in.readString();
+    }
+
+    public static final Creator<Donut> CREATOR = new Creator<Donut>() {
+        @Override
+        public Donut createFromParcel(Parcel in) {
+            return new Donut(in);
+        }
+
+        @Override
+        public Donut[] newArray(int size) {
+            return new Donut[size];
+        }
+    };
 
     /**
      * Method overridden from the MenuItem class. Depending
@@ -91,4 +112,14 @@ public class Donut extends MenuItem{
         return "(" + getQuantity() + ") "+ getType();
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.getQuantity());
+        dest.writeString(this.getType());
+    }
 }

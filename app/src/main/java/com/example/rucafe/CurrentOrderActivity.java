@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,6 +15,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     private static Order currOrder = new Order();
 
+    private ArrayList<MenuItem> visibleOrderList = currOrder.copyList();
 
     private ListView itemList;
     private ArrayAdapter<MenuItem> adapter;
@@ -25,27 +27,24 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         setTitle("Current Order");
 
-        itemList = findViewById(R.id.itemList);
-        adapter = currOrder.linkAdapterToOrder(this, android.R.layout.simple_list_item_1);
-
-        addIncomingDonuts();
-
-    }
-
-
-    public void addIncomingDonuts(){
-        Intent intent = getIntent();
-        Bundle donuts = intent.getBundleExtra("Bundle");
-        ArrayList<Donut> list = (ArrayList<Donut>) donuts.getSerializable("Donut List");
-        if(list != null){
-            for(int i = 0; i < list.size(); i++){
-                currOrder.add(list.get(i));
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            ArrayList<Donut> list = intent.getParcelableArrayListExtra("Donut List");
+            if(list != null){
+                for(int i = 0; i < list.size(); i++){
+                    currOrder.add(list.get(i));
+                }
+                visibleOrderList = currOrder.copyList();
             }
-            adapter.notifyDataSetChanged();
-        }else{
-            return;
         }
+
+        itemList = findViewById(R.id.itemList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, visibleOrderList);
+        itemList.setAdapter(adapter);
+
+
     }
+
 
 
 }
