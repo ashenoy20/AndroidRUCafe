@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">RUCafe</string>
-    <string name="yeast_donut">Yeast Donut</string>
-    <string name="cake_donut">Cake Donut</string>
-    <string name="donut_holes">Donut Holes</string>
+    <string name="glazed_donut">Glazed Donut</string>
+    <string name="chocolate_donut">Chocolate Donut</string>
+    <string name="glazed_munchkins">Glazed Munchkins</string>
+    <string name="cinnamon_bun">Cinnamon Donut</string>
     <string name="quantity_label">Quantity:</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="remove_from_cart">Remove Item</string>

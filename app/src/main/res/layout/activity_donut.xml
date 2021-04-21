@@ -101,7 +101,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="393dp"
             android:layout_height="183dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -111,30 +111,37 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
+                android:layout_width="88dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/yeast" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/cake" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/hole" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/cinnamonbun" />
         </LinearLayout>
 
         <RadioGroup
             android:id="@+id/group"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_width="400dp"
+            android:layout_height="44dp"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
@@ -148,26 +155,29 @@
 
             <RadioButton
                 android:id="@+id/yeastButton"
-                android:layout_width="wrap_content"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:text="@string/yeast_donut" />
+
+
+                android:text="@string/glazed_donut" />
 
             <RadioButton
                 android:id="@+id/cakeButton"
-                android:layout_width="wrap_content"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/cake_donut" />
+                android:text="@string/chocolate_donut" />
 
             <RadioButton
                 android:id="@+id/dHolesButton"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:text="@string/donut_holes" />
+                android:text="@string/glazed_munchkins" />
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                android:text="@string/cinnamon_bun" />
         </RadioGroup>
 
 
