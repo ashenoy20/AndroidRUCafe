@@ -59,7 +59,6 @@ public class CoffeeActivity extends AppCompatActivity {
     public void addToOrder(View v) {
         try{
             coffee.setSize(sizeGroup.getChildAt(sizeGroup.getCheckedRadioButtonId()).toString());
-
         }
         catch (Exception e){
             Toast.makeText(this, "This will never happen.", Toast.LENGTH_SHORT).show();
