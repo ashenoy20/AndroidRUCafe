@@ -82,9 +82,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
             MenuItem removedItem = visibleOrderList.remove(selectedPosition);
             currOrder.remove(removedItem);
             adapter.notifyDataSetChanged();
-            for(int i = 0; i < itemList.getChildCount(); i++){
-                itemList.getChildAt(i).setBackgroundResource(R.color.unselectedItem);
-            }
             calculateAmounts();
             Toast.makeText(this, "Successfully removed item", Toast.LENGTH_SHORT).show();
             selectedPosition = NO_SELECTION;
@@ -106,6 +103,14 @@ public class CurrentOrderActivity extends AppCompatActivity {
         subtotalView.setText(formatter.format(subtotalData));
         taxView.setText(formatter.format(taxData));
         totalView.setText(formatter.format(totalData));
+    }
+
+
+    public void placeOrder(View v){
+        Intent intent = new Intent(this, OrdersActivity.class);
+        intent.putExtra("New Order", currOrder);
+        startActivity(intent);
+        currOrder = new Order();
     }
 
 

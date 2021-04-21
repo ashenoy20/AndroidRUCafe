@@ -135,7 +135,7 @@
                 android:layout_width="79dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@mipmap/cinnamonbun" />
+                app:srcCompat="@mipmap/cinnamondonut" />
         </LinearLayout>
 
         <RadioGroup
@@ -154,7 +154,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <RadioButton
-                android:id="@+id/yeastButton"
+                android:id="@+id/glazedButton"
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
 
@@ -162,19 +162,19 @@
                 android:text="@string/glazed_donut" />
 
             <RadioButton
-                android:id="@+id/cakeButton"
+                android:id="@+id/chocolateButton"
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:text="@string/chocolate_donut" />
 
             <RadioButton
-                android:id="@+id/dHolesButton"
+                android:id="@+id/glazedMunchButton"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 android:text="@string/glazed_munchkins" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/cinnamonButton"
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:text="@string/cinnamon_bun" />

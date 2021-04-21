@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
@@ -70,16 +69,19 @@ public class DonutActivity extends AppCompatActivity {
             if(numDonuts <= 0) throw new Exception();
 
             Donut newDonut;
-            if(group.getCheckedRadioButtonId() == R.id.yeastButton){
-                newDonut = new Donut("Yeast Donut", numDonuts);
-            }else if(group.getCheckedRadioButtonId() == R.id.cakeButton){
-                newDonut = new Donut("Cake Donut", numDonuts);
-            }else if(group.getCheckedRadioButtonId() == R.id.dHolesButton){
-                newDonut = new Donut("Donut Holes", numDonuts);
-            }else {
+            if(group.getCheckedRadioButtonId() == R.id.glazedButton){
+                newDonut = new Donut("Glazed Donut", numDonuts);
+            }else if(group.getCheckedRadioButtonId() == R.id.chocolateButton){
+                newDonut = new Donut("Chocolate Donut", numDonuts);
+            }else if(group.getCheckedRadioButtonId() == R.id.glazedMunchButton){
+                newDonut = new Donut("Glazed Munchkins", numDonuts);
+            }else if(group.getCheckedRadioButtonId() == R.id.cinnamonButton) {
+                newDonut = new Donut("Cinnamon Donut", numDonuts);
+            }else{
                 Toast.makeText(this, "Please select a Donut Type", Toast.LENGTH_SHORT).show();
                 return;
             }
+
             newDonut.itemPrice();
             list.add(newDonut);
             adapter.notifyDataSetChanged();
@@ -115,7 +117,9 @@ public class DonutActivity extends AppCompatActivity {
     public void addToOrder(View v){
         Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
         donutInfo.putExtra("Donut List", list);
+        list = new ArrayList<>();
         startActivity(donutInfo);
+
 
     }
 

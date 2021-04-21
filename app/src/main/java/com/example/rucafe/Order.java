@@ -1,9 +1,8 @@
 package com.example.rucafe;
 
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +12,7 @@ import java.util.ArrayList;
  * orders, and gets called to show the order on the listview when the client is on their
  * current order page.
  */
-public class Order implements Customizable{
+public class Order implements Customizable, Serializable {
 
     private ArrayList<MenuItem> list;
 
