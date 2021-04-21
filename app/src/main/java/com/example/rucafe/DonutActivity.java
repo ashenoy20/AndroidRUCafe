@@ -38,9 +38,6 @@ public class DonutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donut);
         setTitle("Order Donuts");
 
-        Button addCart = findViewById(R.id.addCart);
-        Button removeCart = findViewById(R.id.removeCart);
-        Button addOrder = findViewById(R.id.addOrder);
         group = findViewById(R.id.group);
         quantity = findViewById(R.id.quantityText);
 
@@ -50,41 +47,17 @@ public class DonutActivity extends AppCompatActivity {
         donutList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                View v;
-                for(int i = 0; i < donutList.getChildCount(); i++){
+
+                for(int i = donutList.getFirstVisiblePosition(); i <= donutList.getLastVisiblePosition(); i++){
                     if(i == position){
-                        selectedPosition = i;
-                        v = donutList.getChildAt(i);
-                        v.setBackgroundResource(R.color.selectedItem);
-                    }else{
-                        v = donutList.getChildAt(i);
-                        v.setBackgroundResource(R.color.unselectedItem);
+                        selectedPosition = position;
+                        Toast.makeText(getApplicationContext(), "Selected item at position: " + position, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
         donutList.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
-        addCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToCart(v);
-            }
-        });
-
-        removeCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeFromCart(v);
-            }
-        });
-
-        addOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToOrder(v);
-            }
-        });
 
     }
 
@@ -111,13 +84,15 @@ public class DonutActivity extends AppCompatActivity {
             list.add(newDonut);
             adapter.notifyDataSetChanged();
             calculateSubtotal();
+
         }catch(Exception e){
-            Toast.makeText(this, "Please select valid quantity", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "Please select valid quantity", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     public void removeFromCart(View v){
+
             try {
                 if(selectedPosition == NO_SELECTION){
                     Toast.makeText(this, "Please select an item from list", Toast.LENGTH_SHORT).show();

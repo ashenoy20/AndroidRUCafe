@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrdersActivity"/>
-        <activity android:name=".CurrentOrderActivity" />
-        <activity android:name=".CoffeeActivity" />
-        <activity android:name=".DonutActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".OrdersActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CurrentOrderActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CoffeeActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".DonutActivity" android:windowSoftInputMode="adjustNothing" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,9 +3,10 @@ package com.example.rucafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,16 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
+
 
 public class CoffeeActivity extends AppCompatActivity {
 
     private static Coffee coffee = new Coffee();
     private RadioGroup sizeGroup;
-    private Button addOrder;
     private CheckBox[] addOns;
     private Spinner spinner;
-    private ArrayAdapter<String> adapter;
 
 
     @SuppressLint("ResourceType")
@@ -34,7 +33,7 @@ public class CoffeeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coffee);
         setTitle("Order Coffee");
 
-        addOrder = findViewById(R.id.addToOrder);
+        Button addOrder = findViewById(R.id.addToOrder);
         sizeGroup = findViewById(R.id.sizeGroup);
         sizeGroup.check(R.id.shortRadio);
         addOns = new CheckBox[]{
@@ -44,21 +43,31 @@ public class CoffeeActivity extends AppCompatActivity {
                 findViewById(R.id.syrupBox),
                 findViewById(R.id.whipCreamBox)};
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, R.array.coffeeQuant);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, R.array.coffeeQuant);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner = findViewById(R.id.spinner);
-        addOrder.setOnClickListener(new View.OnClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                addToOrder(v);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                coffee.setQuantity(Integer.parseInt((String) spinner.getSelectedItem()));
+                calculateSubtotal();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+
         calculateSubtotal();
     }
 
-    public void addToOrder(View v) {
+    public void addCoffeeToOrder(View v) {
         try{
-            coffee.setSize(sizeGroup.getChildAt(sizeGroup.getCheckedRadioButtonId()).toString());
+            Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
+            donutInfo.putExtra("Coffee Order", coffee);
+            coffee = new Coffee();
+            startActivity(donutInfo);
         }
         catch (Exception e){
             Toast.makeText(this, "This will never happen.", Toast.LENGTH_SHORT).show();
@@ -69,8 +78,8 @@ public class CoffeeActivity extends AppCompatActivity {
 
     public void resetButtons() {
         sizeGroup.clearCheck();
-        for (int i = 0; i < addOns.length; i++) {
-            addOns[i].setChecked(false);
+        for (CheckBox addOn : addOns) {
+            addOn.setChecked(false);
         }
 
     }
@@ -84,15 +93,15 @@ public class CoffeeActivity extends AppCompatActivity {
 
 
         String textSubtotal = formatter.format(subtotal);
-        subtotalView.setText("Subtotal: "+textSubtotal);
+        subtotalView.setText(textSubtotal);
     }
 
-    public void toggleAddIns(View v){
-        for (int i = 0; i < addOns.length; i++) {
-            if (addOns[i].isChecked())
-                coffee.add(addOns[i].getText());
+    public void toggleOptions(View v){
+        for (CheckBox addOn : addOns) {
+            if (addOn.isChecked())
+                coffee.add(addOn.getText());
             else
-                coffee.remove(addOns[i].getText());
+                coffee.remove(addOn.getText());
         }
 
         if(sizeGroup.getCheckedRadioButtonId() == R.id.shortRadio){
@@ -104,8 +113,6 @@ public class CoffeeActivity extends AppCompatActivity {
         }else if(sizeGroup.getCheckedRadioButtonId() == R.id.ventiRadio) {
             coffee.setSize("Venti");
         }
-
-        coffee.setQuantity(Integer.parseInt((String) spinner.getSelectedItem()));
 
         calculateSubtotal();
     }

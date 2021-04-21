@@ -1,12 +1,14 @@
 package com.example.rucafe;
 
 
+import java.io.Serializable;
+
 /**
  * A class that acts as a parent class to any menu item
  * in the cafe. Contains the absolute basic fields that any
  * menu item has.
  */
-public class MenuItem {
+public class MenuItem implements Serializable {
     private double price;
 
     /**

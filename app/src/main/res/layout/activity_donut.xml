@@ -60,7 +60,8 @@
             android:text="@string/add_to_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="addToCart"/>
 
         <Button
             android:id="@+id/removeCart"
@@ -70,7 +71,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/addOrder"
             app:layout_constraintStart_toEndOf="@+id/addCart"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="removeFromCart"/>
 
         <Button
             android:id="@+id/addOrder"
@@ -80,7 +82,8 @@
             android:text="@string/add_to_order"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="addToOrder"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -172,27 +175,29 @@
 
     <ListView
         android:id="@+id/donutList"
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_width="413dp"
+        android:layout_height="200dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0.589">
+        app:layout_constraintVertical_bias="0.853">
 
     </ListView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="413dp"
-        android:layout_height="90dp"
+        android:layout_width="416dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toTopOf="@+id/donutList"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.138">
 
         <TextView
             android:id="@+id/textView4"

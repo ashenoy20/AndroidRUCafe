@@ -1,5 +1,9 @@
 package com.example.rucafe;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +17,7 @@ import java.util.ArrayList;
  * @author Abimanyu Ananthu, Ashish Shenoy
  */
 
-public class Coffee extends MenuItem implements Customizable{
+public class Coffee extends MenuItem implements Customizable, Serializable {
 
     private ArrayList<String> addIns;
     private String size;
@@ -27,6 +31,8 @@ public class Coffee extends MenuItem implements Customizable{
     public static final int GRANDE = 2;
     public static final int VENTI = 3;
 
+
+
     /**
      * This is the Coffee constructor that takes is
      * responsible for initializing values, such as
@@ -39,6 +45,9 @@ public class Coffee extends MenuItem implements Customizable{
         this.size = "Short";
         this.quantity = 1;
     }
+
+
+
 
     /**
      * Method Overridden from the MenuItem class that
@@ -177,9 +186,10 @@ public class Coffee extends MenuItem implements Customizable{
      */
     public String toString(){
         ArrayList<String> list = this.getAddIns();
-        String size = this.getSize();
-        int quantity = this.getQuantity();
+        String size = this.size;
+        int quantity = this.quantity;
 
         return "("+ quantity + ") " + size + " Coffee " + list;
     }
+
 }

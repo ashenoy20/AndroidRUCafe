@@ -1,8 +1,9 @@
 package com.example.rucafe;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
+
+import java.io.Serializable;
 
 /**
  * A class that holds all the necessary information
@@ -14,13 +15,12 @@ import android.os.Parcelable;
  * options offered.
  * @author Abimanyu Ananthu, Ashish Shenoy
  */
-public class Donut extends MenuItem implements Parcelable {
+public class Donut extends MenuItem implements Serializable {
     private int quantity;
     private String type;
 
-    public static final double YEAST_DONUT_PRICE = 1.39;
-    public static final double CAKE_DONUT_PRICE = 1.59;
-    public static final double DONUT_HOLE_PRICE = 0.33;
+    public static final double DONUT_PRICE = 1.39;
+
 
     /**
      * Constructor that creates an instance of the Donut class.
@@ -35,23 +35,6 @@ public class Donut extends MenuItem implements Parcelable {
         this.type = type;
     }
 
-    private Donut(Parcel in) {
-        super(0);
-        quantity = in.readInt();
-        type = in.readString();
-    }
-
-    public static final Creator<Donut> CREATOR = new Creator<Donut>() {
-        @Override
-        public Donut createFromParcel(Parcel in) {
-            return new Donut(in);
-        }
-
-        @Override
-        public Donut[] newArray(int size) {
-            return new Donut[size];
-        }
-    };
 
     /**
      * Method overridden from the MenuItem class. Depending
@@ -63,21 +46,10 @@ public class Donut extends MenuItem implements Parcelable {
      */
     @Override
     public double itemPrice() {
-        String type = this.getType();
         int quantity = this.getQuantity();
 
-        double total = 0;
-        switch (type){
-            case "Yeast Donut":
-                total = YEAST_DONUT_PRICE*quantity;
-                break;
-            case "Cake Donut":
-                total = CAKE_DONUT_PRICE*quantity;
-                break;
-            case "Donut Holes":
-                total = DONUT_HOLE_PRICE*quantity;
-                break;
-        }
+        double total = DONUT_PRICE*quantity;
+
         super.setItemPrice(total);
         return super.itemPrice();
     }
@@ -108,18 +80,10 @@ public class Donut extends MenuItem implements Parcelable {
      *
      * @return - A String value that is readable by the client
      */
+
     public String toString(){
         return "(" + getQuantity() + ") "+ getType();
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.getQuantity());
-        dest.writeString(this.getType());
-    }
 }
