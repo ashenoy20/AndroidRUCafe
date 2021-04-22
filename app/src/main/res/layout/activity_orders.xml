@@ -65,7 +65,7 @@
 
         <TextView
             android:id="@+id/storeOrdersTotal"
-            android:layout_width="59dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:text="@string/zero_subtotal"
             android:textColor="@android:color/white"
