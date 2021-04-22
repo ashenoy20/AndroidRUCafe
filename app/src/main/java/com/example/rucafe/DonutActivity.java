@@ -115,10 +115,14 @@ public class DonutActivity extends AppCompatActivity {
     }
 
     public void addToOrder(View v){
-        Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
-        donutInfo.putExtra("Donut List", list);
-        list = new ArrayList<>();
-        startActivity(donutInfo);
+        if(list.size() != 0){
+            Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
+            donutInfo.putExtra("Donut List", list);
+            list = new ArrayList<>();
+            startActivity(donutInfo);
+        }else{
+            Toast.makeText(this, "No items in the list", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

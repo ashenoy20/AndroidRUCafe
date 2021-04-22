@@ -32,7 +32,7 @@ public class OrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
-
+        setTitle("View Orders");
         orderList = findViewById(R.id.orderView);
         orderDropDown = findViewById(R.id.orderNumber);
 
@@ -83,7 +83,7 @@ public class OrdersActivity extends AppCompatActivity {
         if(trackOrders != 0){
             orderDropDown.setSelection(position);
         }else{
-            totalView.setText("$0.00");
+            totalView.setText(R.string.zero_subtotal);
             shownList = new ArrayList<>();
             listViewAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, shownList);
             orderList.setAdapter(listViewAdapter);

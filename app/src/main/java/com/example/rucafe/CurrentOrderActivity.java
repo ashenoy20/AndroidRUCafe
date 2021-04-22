@@ -34,7 +34,7 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         setTitle("Current Order");
 
-        if(getIntent() != null){
+        if(getIntent().getExtras() != null){
             Intent intent = getIntent();
 
             Coffee orderedCoffee = (Coffee) intent.getSerializableExtra("Coffee Order");
@@ -107,10 +107,15 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
 
     public void placeOrder(View v){
-        Intent intent = new Intent(this, OrdersActivity.class);
-        intent.putExtra("New Order", currOrder);
-        startActivity(intent);
-        currOrder = new Order();
+        if(visibleOrderList.size() != 0){
+            Intent intent = new Intent(this, OrdersActivity.class);
+            intent.putExtra("New Order", currOrder);
+            startActivity(intent);
+            currOrder = new Order();
+        }else{
+            Toast.makeText(this, "Add items to your order before placing one!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

@@ -20,6 +20,10 @@
     <string name="milk">Milk</string>
     <string name="syrup">Syrup</string>
     <string name="whipped_cream">Whip Cream</string>
+    <string name="order_donuts">Order Donuts</string>
+    <string name="order_coffee">Order Coffee</string>
+    <string name="current_order">Current Order</string>
+    <string name="view_orders">View Orders</string>
     <string-array name="coffeeQuant">
         <item>1</item>
         <item>2</item>
