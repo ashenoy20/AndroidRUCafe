@@ -6,55 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/donutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="236dp"
-        android:onClick="donutClick"
-        android:text="Order Donuts"
-        app:layout_constraintEnd_toStartOf="@+id/coffeeButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/coffeeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
-        android:layout_marginEnd="24dp"
-        android:onClick="coffeeClick"
-        android:text="Order Coffee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/currButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="192dp"
-        android:onClick="currentOrderClick"
-        android:text="Current Order"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viewButton"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donutButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/viewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="116dp"
-        android:onClick="viewOrderClick"
-        android:text="View Orders"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/coffeewallp"
+        android:backgroundTint="#632B2B2B"
+        android:backgroundTintMode="src_over"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coffeeButton"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/donutButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="donutClick"
+            android:shadowColor="#231C1C"
+            android:shadowRadius="2"
+            android:text="Order Donuts" />
+
+        <Button
+            android:id="@+id/coffeeButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="coffeeClick"
+            android:shadowColor="#231C1C"
+            android:shadowRadius="2"
+            android:text="Order Coffee" />
+
+        <Button
+            android:id="@+id/viewButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="viewOrderClick"
+            android:shadowColor="#231C1C"
+            android:shadowRadius="2"
+            android:text="View Orders" />
+
+        <Button
+            android:id="@+id/currButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="currentOrderClick"
+            android:shadowColor="#231C1C"
+            android:shadowRadius="2"
+            android:text="Current Order" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

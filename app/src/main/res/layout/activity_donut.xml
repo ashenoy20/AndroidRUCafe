@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/coffeewallp"
+    android:backgroundTint="#632B2B2B"
+    android:backgroundTintMode="src_over"
     tools:context=".DonutActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +28,7 @@
             android:layout_marginStart="24dp"
             android:ems="10"
             android:inputType="number"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView"
@@ -37,6 +41,7 @@
             android:layout_marginTop="111dp"
             android:layout_marginBottom="111dp"
             android:text="@string/quantity_label"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/quantityText"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,36 +59,42 @@
 
         <Button
             android:id="@+id/addCart"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="addToCart"
             android:text="@string/add_to_cart"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="addToCart"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/removeCart"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:onClick="removeFromCart"
             android:text="@string/remove_from_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/addOrder"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/addCart"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="removeFromCart"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/addOrder"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_corner"
+            android:onClick="addToOrder"
             android:text="@string/add_to_order"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="addToOrder"/>
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -159,25 +170,29 @@
                 android:layout_height="wrap_content"
 
 
-                android:text="@string/glazed_donut" />
+                android:text="@string/glazed_donut"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/chocolateButton"
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                android:text="@string/chocolate_donut" />
+                android:text="@string/chocolate_donut"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/glazedMunchButton"
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:text="@string/glazed_munchkins" />
+                android:text="@string/glazed_munchkins"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/cinnamonButton"
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                android:text="@string/cinnamon_bun" />
+                android:text="@string/cinnamon_bun"
+                android:textColor="#FFFFFF" />
         </RadioGroup>
 
 
@@ -215,6 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/subtotal"
+            android:textColor="@color/unselectedItem"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/subtotalView"
             app:layout_constraintStart_toStartOf="parent"
@@ -226,6 +242,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:text="@string/zero_subtotal"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent"
