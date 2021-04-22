@@ -54,17 +54,6 @@ public class StoreOrders implements Customizable{
     }
 
 
-    /**
-     * A method that just returns the size of the list.
-     *
-     * @return - A int value that shows how many orders are in the list.
-     */
-
-    public int getSize(){
-        return this.list.size();
-    }
-
-
 
     /**
      * A method that adds an order to the store order list.

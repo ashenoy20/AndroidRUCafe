@@ -15,7 +15,15 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 
-
+/**
+ * An Activity that keeps track of the user's coffee order.
+ * Gives the user the ability to customize their order by
+ * choosing from multiple sizes and selecting multiple
+ * add ins. The user also has the ability to choose the quantity
+ * between 1 and 10.
+ *
+ * @author Ashish Shenoy, Abimanyu Ananthu
+ */
 public class CoffeeActivity extends AppCompatActivity {
 
     private static Coffee coffee = new Coffee();
@@ -57,6 +65,14 @@ public class CoffeeActivity extends AppCompatActivity {
         calculateSubtotal();
     }
 
+    /**
+     * A method that adds the coffee to the Current Order
+     * Activity. This method then clears all the fields
+     * once successfully sent.
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void addCoffeeToOrder(View v) {
         try{
             Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
@@ -71,7 +87,10 @@ public class CoffeeActivity extends AppCompatActivity {
         resetButtons();
     }
 
-    public void resetButtons() {
+    /**
+     * Helper method that deselects all the buttons
+     */
+    private void resetButtons() {
         sizeGroup.clearCheck();
         for (CheckBox addOn : addOns) {
             addOn.setChecked(false);
@@ -79,6 +98,10 @@ public class CoffeeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Helper method that calculates and sets the subtotal
+     * when the user customizes their coffee
+     */
     public void calculateSubtotal() {
         TextView subtotalView = findViewById(R.id.subtotalValue);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -91,6 +114,15 @@ public class CoffeeActivity extends AppCompatActivity {
         subtotalView.setText(textSubtotal);
     }
 
+    /**
+     * Method that helps dynamically update the subtotal by
+     * listening for specific button/checkbox clicks. Any
+     * button that influences price will fire this method when
+     * that specific button is pressed
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void toggleOptions(View v){
         for (CheckBox addOn : addOns) {
             if (addOn.isChecked())

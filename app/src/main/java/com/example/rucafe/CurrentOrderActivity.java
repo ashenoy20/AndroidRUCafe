@@ -1,7 +1,6 @@
 package com.example.rucafe;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +14,17 @@ import android.widget.Toast;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+/**
+ * An Activity class that keeps track of the user's current
+ * order. The user has the ability to remove unwanted items in
+ * their current order. The subtotal, the tax, and the total
+ * is displayed dynamically when the user makes a deletion.
+ * Once the user is satisfied with their items in the current
+ * order, they can place their order that will be sent to
+ * the Orders Activity
+ *
+ * @author Ashish Shenoy, Abimanyu Ananthu
+ */
 public class CurrentOrderActivity extends AppCompatActivity {
 
     private static final int NO_SELECTION = -1;
@@ -72,7 +82,16 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * This method will remove the selected item form the
+     * list view. This method fires when the user clicks the
+     * "Remove Item" button. This method will display a Toast
+     * if the user hasn't selected an item before clicking
+     * the button
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void removeFromOrder(View v){
         try {
             if(selectedPosition == NO_SELECTION){
@@ -90,6 +109,31 @@ public class CurrentOrderActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * A method that will place the order, which means it
+     * will send the current Order object to the
+     * Orders Activity. This method will display
+     * a toast if the order list is empty.
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
+    public void placeOrder(View v){
+        if(visibleOrderList.size() != 0){
+            Intent intent = new Intent(this, OrdersActivity.class);
+            intent.putExtra("New Order", currOrder);
+            startActivity(intent);
+            currOrder = new Order();
+        }else{
+            Toast.makeText(this, "Add items to your order before placing one!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    /**
+     * A method responsible for calculating and setting
+     * the text views for subtotal, tax, and the total.
+     */
     public void calculateAmounts(){
         TextView subtotalView = findViewById(R.id.orderSubTotal);
         TextView taxView = findViewById(R.id.taxValue);
@@ -103,19 +147,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
         subtotalView.setText(formatter.format(subtotalData));
         taxView.setText(formatter.format(taxData));
         totalView.setText(formatter.format(totalData));
-    }
-
-
-    public void placeOrder(View v){
-        if(visibleOrderList.size() != 0){
-            Intent intent = new Intent(this, OrdersActivity.class);
-            intent.putExtra("New Order", currOrder);
-            startActivity(intent);
-            currOrder = new Order();
-        }else{
-            Toast.makeText(this, "Add items to your order before placing one!", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
 

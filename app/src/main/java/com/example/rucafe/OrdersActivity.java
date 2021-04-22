@@ -10,10 +10,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+/**
+ * An Activity responsible for displaying all the orders
+ * placed by the user. Using a drop down, the can toggle
+ * between orders and the changes are dynamically shown
+ * in the list view and the total.
+ *
+ * @author Ashish Shenoy, Abimanyu Ananthu
+ */
 public class OrdersActivity extends AppCompatActivity {
 
     private static StoreOrders storedOrders = new StoreOrders();
@@ -72,8 +81,20 @@ public class OrdersActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * A method that removes the order the user is currently
+     * displaying on the list view. This method will fire
+     * when the user clicks the "Remove Order" button.
+     * Displays a Toast when there is no order in the drop
+     * down.
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void removeOrder(View v){
+        if(trackOrders == 0){
+            Toast.makeText(this, "Please place an order before removing", Toast.LENGTH_SHORT).show();
+            return;
+        }
         TextView totalView = findViewById(R.id.storeOrdersTotal);
         String selectedItem = (String) orderDropDown.getSelectedItem();
         int position = Integer.parseInt(selectedItem) - 1;
@@ -100,6 +121,10 @@ public class OrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * A method responsible for calculating and setting
+     * the text views for the total.
+     */
     public void calculateAmounts(int position){
 
         TextView totalView = findViewById(R.id.storeOrdersTotal);
