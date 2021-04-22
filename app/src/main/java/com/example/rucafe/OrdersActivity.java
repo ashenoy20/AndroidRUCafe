@@ -28,6 +28,8 @@ public class OrdersActivity extends AppCompatActivity {
     private static ArrayList<String> orderNumbers = new ArrayList<>();
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class OrdersActivity extends AppCompatActivity {
                 shownList = storedOrders.getOrder(position).copyList();
                 listViewAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, shownList);
                 orderList.setAdapter(listViewAdapter);
-                calculateAmounts();
+                calculateAmounts(position);
             }
 
             @Override
@@ -81,7 +83,15 @@ public class OrdersActivity extends AppCompatActivity {
         spinnerArrayAdapter.notifyDataSetChanged();
 
         if(trackOrders != 0){
-            orderDropDown.setSelection(position);
+            if(position == 0){
+                shownList = storedOrders.getOrder(position).copyList();
+                listViewAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, shownList);
+                orderList.setAdapter(listViewAdapter);
+                calculateAmounts(position);
+            }else{
+                orderDropDown.setSelection(position - 1 , true);
+            }
+
         }else{
             totalView.setText(R.string.zero_subtotal);
             shownList = new ArrayList<>();
@@ -90,12 +100,12 @@ public class OrdersActivity extends AppCompatActivity {
         }
     }
 
-    public void calculateAmounts(){
+    public void calculateAmounts(int position){
 
         TextView totalView = findViewById(R.id.storeOrdersTotal);
-        String selectedItem = (String) orderDropDown.getSelectedItem();
-        int position = Integer.parseInt(selectedItem) - 1;
-        Order currentOrder = storedOrders.getOrder(position);
+        String selectedItem = (String) orderDropDown.getItemAtPosition(position);
+        int arrayPosition = Integer.parseInt(selectedItem) - 1;
+        Order currentOrder = storedOrders.getOrder(arrayPosition);
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         double total = currentOrder.calculateTotal();

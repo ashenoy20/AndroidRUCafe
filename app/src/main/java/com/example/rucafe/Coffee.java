@@ -1,7 +1,6 @@
 package com.example.rucafe;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
  * options offered.
  * @author Abimanyu Ananthu, Ashish Shenoy
  */
+
 
 public class Coffee extends MenuItem implements Customizable, Serializable {
 

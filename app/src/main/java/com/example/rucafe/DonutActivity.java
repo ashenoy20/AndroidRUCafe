@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -14,10 +13,18 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+/**
+ * This class drives the Donut Activity. This Activity is responsible for
+ * keeping track of a list of donuts that the user adds/removes from their
+ * cart. In addition, the activity keeps track off the subtotal dynamically
+ * as the user add/removes items from the list. Lastly, the user is able to
+ * add the list and send the data to their current orders page.
+ *
+ * @author Ashish Shenoy, Abimanyu Anathu
+ */
 public class DonutActivity extends AppCompatActivity {
 
     private static ArrayList<Donut> list = new ArrayList<>();
@@ -60,7 +67,16 @@ public class DonutActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * This method is responsible for adding the particular donut
+     * to the cart, which is represented as a list view. This method
+     * fires when the user clicks the "Add to Cart" button. Responds
+     * with a success Toast if added successfully, otherwise a Toast
+     * will indicate that the addition has failed.
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void addToCart(View v){
         try{
             String strDonuts = quantity.getText().toString();
@@ -92,7 +108,16 @@ public class DonutActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * This method is responsible for removing the particular donut
+     * to the cart. This method fires when the user clicks the "Remove Item"
+     * button. Method will successfully remove an item from the list
+     * if the user has pressed on a list item beforehand, otherwise a
+     * Toast will display the issue.
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void removeFromCart(View v){
 
             try {
@@ -113,7 +138,18 @@ public class DonutActivity extends AppCompatActivity {
             }
 
     }
-
+    /**
+     * This method is responsible for adding the donut list to
+     * the current order list in the Current Order Activity. If
+     * there are no items in the list, the user will be prompted
+     * to add an item. This method fires when the "Add to Order"
+     * button is clicked. After sending the data, the Current
+     * Order Activity will be opened to see if the data has passed
+     * successfully.
+     *
+     * @param v - A view object that has fired this particular
+     *        onClick method.
+     */
     public void addToOrder(View v){
         if(list.size() != 0){
             Intent donutInfo = new Intent(this, CurrentOrderActivity.class);
@@ -127,7 +163,11 @@ public class DonutActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Responsible for calculating the subtotal based on
+     * the items in the list. Also responsible for updating
+     * the text view responsible for displaying the subtotal
+     */
     public void calculateSubtotal(){
         TextView subtotalView = findViewById(R.id.subtotalView);
         NumberFormat formatter = NumberFormat.getCurrencyInstance();

@@ -24,6 +24,10 @@
     <string name="order_coffee">Order Coffee</string>
     <string name="current_order">Current Order</string>
     <string name="view_orders">View Orders</string>
+    <string name="tax">Tax:</string>
+    <string name="total">Total:</string>
+    <string name="remove_order">Remove Order</string>
+    <string name="order_label">Order #</string>
     <string-array name="coffeeQuant">
         <item>1</item>
         <item>2</item>

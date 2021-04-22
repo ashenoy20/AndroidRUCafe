@@ -23,8 +23,8 @@
         android:layout_marginStart="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="60dp"
-        android:text="Remove Order"
         android:onClick="removeOrder"
+        android:text="@string/remove_order"
         app:layout_constraintBottom_toTopOf="@+id/orderView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +36,7 @@
         android:layout_marginStart="134dp"
         android:layout_marginTop="86dp"
         android:layout_marginBottom="367dp"
-        android:text="Total"
+        android:text="@string/total"
         app:layout_constraintBottom_toTopOf="@+id/orderView"
         app:layout_constraintStart_toEndOf="@+id/orderNumber"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +72,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="83dp"
         android:layout_marginBottom="263dp"
-        android:text="Order"
+        android:text="@string/order_label"
         app:layout_constraintBottom_toTopOf="@+id/orderView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
