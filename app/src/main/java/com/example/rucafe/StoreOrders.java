@@ -27,21 +27,6 @@ public class StoreOrders implements Customizable{
 
 
     /**
-     * A method that returns the amount of the total of a given order. This order is found using the index number
-     * that is parameterized.
-     *
-     * @param index - int that represents the index of order within store order list.
-     *
-     * @return - double total of the order that index corresponds to.
-     */
-
-    public double getTotal(int index){
-        return this.list.get(index).calculateTotal();
-    }
-
-
-
-    /**
      * A method that just returns order based on the index sent in.
      *
      * @param index - int that represents the index of order within store order list.

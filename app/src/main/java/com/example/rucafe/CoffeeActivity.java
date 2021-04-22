@@ -50,12 +50,23 @@ public class CoffeeActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Fires when a spinner item is selected
+             * @param parent - The AdapterView that contains the view clicked
+             * @param view - the view that was clicked
+             * @param position - the position the view is in the adapter view
+             * @param id - id representing the view
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 coffee.setQuantity(Integer.parseInt((String) spinner.getSelectedItem()));
                 calculateSubtotal();
             }
 
+            /**
+             *  Skeleton method that wont be used
+             * @param parent - The AdapterView that contains the view clicked
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

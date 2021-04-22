@@ -65,6 +65,13 @@ public class OrdersActivity extends AppCompatActivity {
         orderDropDown.setAdapter(spinnerArrayAdapter);
 
         orderDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Fires when a adapter item is selected
+             * @param parent - The AdapterView that contains the view clicked
+             * @param view - the view that was clicked
+             * @param position - the position the view is in the adapter view
+             * @param id - id representing the view
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 shownList = storedOrders.getOrder(position).copyList();
@@ -73,6 +80,10 @@ public class OrdersActivity extends AppCompatActivity {
                 calculateAmounts(position);
             }
 
+            /**
+             *  Skeleton method that wont be used
+             * @param parent - The AdapterView that contains the view clicked
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

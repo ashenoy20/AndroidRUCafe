@@ -68,6 +68,13 @@ public class CurrentOrderActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, visibleOrderList);
         itemList.setAdapter(adapter);
         itemList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Fires when a list item is clicked
+             * @param parent - The AdapterView that contains the view clicked
+             * @param view - the view that was clicked
+             * @param position - the position the view is in the adapter view
+             * @param id - id representing the view
+             */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 for(int i = itemList.getFirstVisiblePosition(); i <= itemList.getLastVisiblePosition(); i++){
