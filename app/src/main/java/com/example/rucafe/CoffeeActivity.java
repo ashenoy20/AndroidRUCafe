@@ -33,7 +33,6 @@ public class CoffeeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coffee);
         setTitle("Order Coffee");
 
-        Button addOrder = findViewById(R.id.addToOrder);
         sizeGroup = findViewById(R.id.sizeGroup);
         sizeGroup.check(R.id.shortRadio);
         addOns = new CheckBox[]{
@@ -43,8 +42,6 @@ public class CoffeeActivity extends AppCompatActivity {
                 findViewById(R.id.syrupBox),
                 findViewById(R.id.whipCreamBox)};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, R.array.coffeeQuant);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
